@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<students>
+    <student>
+        <id>3</id>
+        <name>Dai Bang</name>
+        <age>24</age>
+        <address>Ha Nam</address>
+        <gpa>9.0</gpa>
+    </student>
+    <student>
+        <id>5</id>
+        <name>Nguyen Van B</name>
+        <age>22</age>
+        <address>HP</address>
+        <gpa>8.0</gpa>
+    </student>
+    <student>
+        <id>6</id>
+        <name>Nguyễn Văn B</name>
+        <age>25</age>
+        <address>HP</address>
+        <gpa>7.5</gpa>
+    </student>
+    <student>
+        <id>2</id>
+        <name>Vinh The Mac</name>
+        <age>23</age>
+        <address>Vinh Phuc</address>
+        <gpa>9.5</gpa>
+    </student>
+    <student>
+        <id>4</id>
+        <name>Đỗ Đại Học</name>
+        <age>20</age>
+        <address>Ha Noi</address>
+        <gpa>9.0</gpa>
+    </student>
+    <student>
+        <id>6</id>
+        <name>Vu Quang Vinh</name>
+        <age>36</age>
+        <address>18</address>
+        <gpa>3.6</gpa>
+    </student>
+</students>
