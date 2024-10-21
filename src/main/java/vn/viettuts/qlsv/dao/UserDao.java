@@ -6,8 +6,8 @@ public class UserDao {
 
     public boolean checkUser(User user) {
         if (user != null) {
-            if ("an".equals(user.getUserName())
-                    && "an".equals(user.getPassword())) {
+            if ("admin".equals(user.getUserName())
+                    && "admin".equals(user.getPassword())) {
                 return true;
             }
         }
