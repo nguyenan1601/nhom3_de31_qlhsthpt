@@ -1,6 +1,7 @@
-package vn.viettuts.qlsv.entity;
+package vn.viettuts.qlthpt.entity;
 
 public class User {
+
     private String userName;
     private String password;
 
