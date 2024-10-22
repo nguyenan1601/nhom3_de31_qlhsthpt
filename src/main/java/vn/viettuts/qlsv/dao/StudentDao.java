@@ -115,7 +115,7 @@ public class StudentDao {
     public void sortStudentByName() {
         Collections.sort(listStudents, new Comparator<Student>() {
             public int compare(Student student1, Student student2) {
-                return student1.getName().compareTo(student2.getName());
+                return student1.getFullName().compareTo(student2.getFullName());
             }
         });
     }
