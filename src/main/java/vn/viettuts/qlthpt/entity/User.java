@@ -1,7 +1,9 @@
 package vn.viettuts.qlthpt.entity;
 
-public class User {
+import javax.validation.constraints.NotNull;
 
+public class User {
+    @NotNull(message = "Username khong duoc de trong")
     private String userName;
     private String password;
 

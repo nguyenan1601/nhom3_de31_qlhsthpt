@@ -1,6 +1,9 @@
 package vn.viettuts.qlthpt.dao;
 
-import vn.viettuts.qlsv.entity.User;
+
+import vn.viettuts.qlthpt.entity.User;
+
+import javax.validation.ValidationException;
 
 public class UserDao {
 

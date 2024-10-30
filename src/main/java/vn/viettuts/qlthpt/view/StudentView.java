@@ -1,5 +1,7 @@
 package vn.viettuts.qlthpt.view;
 
+import vn.viettuts.qlthpt.entity.Student;
+
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -188,10 +190,10 @@ public class StudentView extends JFrame implements ActionListener, ListSelection
         Object[][] students = new Object[size][5];
         for (int i = 0; i < size; i++) {
             students[i][0] = list.get(i).getId();
-            students[i][1] = list.get(i).getName();
-            students[i][2] = list.get(i).getAge();
-            students[i][3] = list.get(i).getAddress();
-            students[i][4] = list.get(i).getGpa();
+//            students[i][1] = list.get(i).getName();
+//            students[i][2] = list.get(i).getAge();
+//            students[i][3] = list.get(i).getAddress();
+//            students[i][4] = list.get(i).getGpa();
         }
         studentTable.setModel(new DefaultTableModel(students, columnNames));
     }
@@ -239,10 +241,10 @@ public class StudentView extends JFrame implements ActionListener, ListSelection
      */
     public void showStudent(Student student) {
         idField.setText("" + student.getId());
-        nameField.setText(student.getName());
-        ageField.setText("" + student.getAge());
-        addressTA.setText(student.getAddress());
-        gpaField.setText("" + student.getGpa());
+//        nameField.setText(student.getName());
+//        ageField.setText("" + student.getAge());
+//        addressTA.setText(student.getAddress());
+//        gpaField.setText("" + student.getGpa());
         // enable Edit and Delete buttons
         editStudentBtn.setEnabled(true);
         deleteStudentBtn.setEnabled(true);
@@ -265,10 +267,10 @@ public class StudentView extends JFrame implements ActionListener, ListSelection
             if (idField.getText() != null && !"".equals(idField.getText())) {
                 student.setId(Integer.parseInt(idField.getText()));
             }
-            student.setName(nameField.getText().trim());
-            student.setAge(Byte.parseByte(ageField.getText().trim()));
-            student.setAddress(addressTA.getText().trim());
-            student.setGpa(Float.parseFloat(gpaField.getText().trim()));
+//            student.setName(nameField.getText().trim());
+//            student.setAge(Byte.parseByte(ageField.getText().trim()));
+//            student.setAddress(addressTA.getText().trim());
+//            student.setGpa(Float.parseFloat(gpaField.getText().trim()));
             return student;
         } catch (Exception e) {
             showMessage(e.getMessage());

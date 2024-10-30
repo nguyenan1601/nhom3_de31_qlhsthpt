@@ -1,13 +1,13 @@
 package vn.viettuts.qlthpt.dao;
 
+import vn.viettuts.qlthpt.entity.Student;
+import vn.viettuts.qlthpt.entity.StudentXML;
+import vn.viettuts.qlthpt.utils.FileUtils;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import vn.viettuts.qlsv.entity.Student;
-import vn.viettuts.qlsv.entity.StudentXML;
-import vn.viettuts.qlsv.utils.FileUtils;
 
 /**
  * StudentDao class
@@ -76,10 +76,10 @@ public class StudentDao {
         int size = listStudents.size();
         for (int i = 0; i < size; i++) {
             if (listStudents.get(i).getId() == student.getId()) {
-                listStudents.get(i).setName(student.getName());
-                listStudents.get(i).setAge(student.getAge());
-                listStudents.get(i).setAddress(student.getAddress());
-                listStudents.get(i).setGpa(student.getGpa());
+//                listStudents.get(i).setName(student.getName());
+//                listStudents.get(i).setAge(student.getAge());
+//                listStudents.get(i).setAddress(student.getAddress());
+//                listStudents.get(i).setGpa(student.getGpa());
                 writeListStudents(listStudents);
                 break;
             }
@@ -123,16 +123,16 @@ public class StudentDao {
     /**
      * sắp xếp danh sách student theo GPA theo tứ tự tăng dần
      */
-    public void sortStudentByGPA() {
-        Collections.sort(listStudents, new Comparator<Student>() {
-            public int compare(Student student1, Student student2) {
-                if (student1.getGpa() > student2.getGpa()) {
-                    return 1;
-                }
-                return -1;
-            }
-        });
-    }
+//    public void sortStudentByGPA() {
+//        Collections.sort(listStudents, new Comparator<Student>() {
+//            public int compare(Student student1, Student student2) {
+//                if (student1.getGpa() > student2.getGpa()) {
+//                    return 1;
+//                }
+//                return -1;
+//            }
+//        });
+//    }
 
     public List<Student> getListStudents() {
         return listStudents;
