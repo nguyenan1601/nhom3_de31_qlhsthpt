@@ -33,14 +33,23 @@ public class LoginController {
 
         public void actionPerformed(ActionEvent e) {
             User user = loginView.getUser();
-            if (userDao.checkUser(user)) {
-                // nếu đăng nhập thành công, mở màn hình quản lý sinh viên
-                studentView = new StudentView();
-                StudentController studentController = new StudentController(studentView);
-                studentController.showStudentView();
-                loginView.setVisible(false);
-            } else {
-                loginView.showMessage("username hoặc password không đúng.");
+            String username = user.getUserName();
+            String password = user.getPassword();
+
+            if (username.isEmpty()){
+                loginView.showMessage("Hãy nhập username!");
+            } else if (password.isEmpty()) {
+                loginView.showMessage("Hãy nhập password!");
+            }else {
+                if (userDao.checkUser(user)) {
+                    // nếu đăng nhập thành công, mở màn hình quản lý sinh viên
+                    studentView = new StudentView();
+                    StudentController studentController = new StudentController(studentView);
+                    studentController.showStudentView();
+                    loginView.setVisible(false);
+                }else {
+                    loginView.showMessage("username hoặc password không đúng.");
+                }
             }
         }
     }
