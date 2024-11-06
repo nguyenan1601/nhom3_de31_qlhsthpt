@@ -7,9 +7,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "teacher")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Teacher implements Serializable {
+public class Teacher {
 
-    private static final long serialVersionUID = 1L;
     private int id;
     private String fullName;
     private String specialty;
@@ -17,8 +16,6 @@ public class Teacher implements Serializable {
     public Teacher() {
     }
 
-    // Constructor, getters, and setters
-    // ...
     public Teacher(int id, String fullName, String specialty) {
         this.id = id;
         this.fullName = fullName;

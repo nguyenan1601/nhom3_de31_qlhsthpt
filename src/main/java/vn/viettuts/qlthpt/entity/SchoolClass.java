@@ -1,24 +1,33 @@
 package vn.viettuts.qlthpt.entity;
 
 import java.io.Serializable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name = "class")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class SchoolClass implements Serializable {
+public class SchoolClass {
 
-    private static final long serialVersionUID = 1L;
+    private int id;
     private String className;
-    private String homeRoomTeacher;
+    private Teacher homeRoomTeacher;
+
+    @XmlElementWrapper(name = "students")
+    @XmlElement(name = "student")
+    private List<Student> students;
+
 
     public SchoolClass() {
+        students = new ArrayList<>();
     }
 
-    public SchoolClass(String className, String homeRoomTeacher) {
-        this.className = className;
-        this.homeRoomTeacher = homeRoomTeacher;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getClassName() {
@@ -29,11 +38,29 @@ public class SchoolClass implements Serializable {
         this.className = className;
     }
 
-    public String getHomeRoomTeacher() {
+    public Teacher getHomeRoomTeacher() {
         return homeRoomTeacher;
     }
 
-    public void setHomeRoomTeacher(String homeRoomTeacher) {
+    public void setHomeRoomTeacher(Teacher homeRoomTeacher) {
         this.homeRoomTeacher = homeRoomTeacher;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+    // Them hoc sinh vao lop hoc
+    public void addStudent(Student student){
+        if (!students.contains(student)) {
+            students.add(student);
+        }
+    }
+    // Xoa hoc sinh khoi lop
+    public void removeStudent(Student student){
+        students.remove(student);
     }
 }

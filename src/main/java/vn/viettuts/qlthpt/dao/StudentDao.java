@@ -12,11 +12,6 @@ import vn.viettuts.qlthpt.entity.Student;
 import vn.viettuts.qlthpt.entity.StudentXML;
 import vn.viettuts.qlthpt.utils.FileUtils;
 
-/**
- * StudentDao class
- * 
- * @author viettuts.vn
- */
 public class StudentDao {
 
     private static final String STUDENT_FILE_NAME = "student.xml";
