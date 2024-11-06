@@ -4,17 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import vn.viettuts.qlthpt.entity.Student;
+import vn.viettuts.qlthpt.entity.StudentXML;
+import vn.viettuts.qlthpt.utils.FileUtils;
 
-import vn.viettuts.qlsv.entity.Student;
-import vn.viettuts.qlsv.entity.StudentXML;
-import vn.viettuts.qlsv.utils.FileUtils;
-
-/**
- * StudentDao class
- * 
- * @author viettuts.vn
- */
 public class StudentDao {
+
     private static final String STUDENT_FILE_NAME = "student.xml";
     private List<Student> listStudents;
 
@@ -26,9 +21,7 @@ public class StudentDao {
     }
 
     /**
-     * Lưu các đối tượng student vào file student.xml
-     * 
-     * @param students
+     * Save student objects to student.xml file
      */
     public void writeListStudents(List<Student> students) {
         StudentXML studentXML = new StudentXML();
@@ -37,9 +30,7 @@ public class StudentDao {
     }
 
     /**
-     * Đọc các đối tượng student từ file student.xml
-     * 
-     * @return list student
+     * Read student objects from student.xml file
      */
     public List<Student> readListStudents() {
         List<Student> list = new ArrayList<Student>();
@@ -50,12 +41,9 @@ public class StudentDao {
         }
         return list;
     }
-    
 
     /**
-     * thêm student vào listStudents và lưu listStudents vào file
-     * 
-     * @param student
+     * Add student to listStudents and save to file
      */
     public void add(Student student) {
         int id = 1;
@@ -68,18 +56,23 @@ public class StudentDao {
     }
 
     /**
-     * cập nhật student vào listStudents và lưu listStudents vào file
-     * 
-     * @param student
+     * Update student in listStudents and save to file
      */
     public void edit(Student student) {
         int size = listStudents.size();
         for (int i = 0; i < size; i++) {
             if (listStudents.get(i).getId() == student.getId()) {
-                listStudents.get(i).setName(student.getName());
-                listStudents.get(i).setAge(student.getAge());
-                listStudents.get(i).setAddress(student.getAddress());
-                listStudents.get(i).setGpa(student.getGpa());
+                listStudents.get(i).setFullName(student.getFullName());
+                listStudents.get(i).setDateOfBirth(student.getDateOfBirth());
+                listStudents.get(i).setIdNumber(student.getIdNumber());
+                listStudents.get(i).setPermanentAddress(student.getPermanentAddress());
+                listStudents.get(i).setClassName(student.getClassName());
+                listStudents.get(i).setFatherName(student.getFatherName());
+                listStudents.get(i).setFatherPhone(student.getFatherPhone());
+                listStudents.get(i).setMotherName(student.getMotherName());
+                listStudents.get(i).setMotherPhone(student.getMotherPhone());
+                listStudents.get(i).setTalents(student.getTalents());
+                listStudents.get(i).setHobbies(student.getHobbies());
                 writeListStudents(listStudents);
                 break;
             }
@@ -87,9 +80,7 @@ public class StudentDao {
     }
 
     /**
-     * xóa student từ listStudents và lưu listStudents vào file
-     * 
-     * @param student
+     * Delete student from listStudents and save to file
      */
     public boolean delete(Student student) {
         boolean isFound = false;
@@ -110,26 +101,23 @@ public class StudentDao {
     }
 
     /**
-     * sắp xếp danh sách student theo name theo tứ tự tăng dần
+     * Sort student list by name in ascending order
      */
     public void sortStudentByName() {
         Collections.sort(listStudents, new Comparator<Student>() {
             public int compare(Student student1, Student student2) {
-                return student1.getName().compareTo(student2.getName());
+                return student1.getFullName().compareTo(student2.getFullName());
             }
         });
     }
 
     /**
-     * sắp xếp danh sách student theo GPA theo tứ tự tăng dần
+     * Sort student list by class name in ascending order
      */
-    public void sortStudentByGPA() {
+    public void sortStudentByClass() {
         Collections.sort(listStudents, new Comparator<Student>() {
             public int compare(Student student1, Student student2) {
-                if (student1.getGpa() > student2.getGpa()) {
-                    return 1;
-                }
-                return -1;
+                return student1.getClassName().compareTo(student2.getClassName());
             }
         });
     }

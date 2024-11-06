@@ -17,6 +17,8 @@ public class Teacher implements Serializable {
     public Teacher() {
     }
 
+    // Constructor, getters, and setters
+    // ...
     public Teacher(int id, String fullName, String specialty) {
         this.id = id;
         this.fullName = fullName;

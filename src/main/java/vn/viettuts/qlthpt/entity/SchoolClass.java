@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "class")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Class implements Serializable {
+public class SchoolClass implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String className;
     private String homeRoomTeacher;
 
-    public Class() {
+    public SchoolClass() {
     }
 
-    public Class(String className, String homeRoomTeacher) {
+    public SchoolClass(String className, String homeRoomTeacher) {
         this.className = className;
         this.homeRoomTeacher = homeRoomTeacher;
     }
@@ -36,5 +36,4 @@ public class Class implements Serializable {
     public void setHomeRoomTeacher(String homeRoomTeacher) {
         this.homeRoomTeacher = homeRoomTeacher;
     }
-
 }

@@ -11,7 +11,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.WindowConstants;
-import vn.viettuts.qlsv.entity.User;
+import vn.viettuts.qlthpt.entity.User;
 
 public class LoginView extends JFrame implements ActionListener {
 

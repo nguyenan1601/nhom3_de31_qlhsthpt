@@ -1,6 +1,6 @@
 package vn.viettuts.qlthpt.dao;
 
-import vn.viettuts.qlsv.entity.User;
+import vn.viettuts.qlthpt.entity.User;
 
 public class UserDao {
 

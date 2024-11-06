@@ -2,6 +2,8 @@ package vn.viettuts.qlthpt.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import vn.viettuts.qlthpt.dao.UserDao;
+import vn.viettuts.qlthpt.entity.User;
 import vn.viettuts.qlthpt.view.LoginView;
 import vn.viettuts.qlthpt.view.StudentView;
 
