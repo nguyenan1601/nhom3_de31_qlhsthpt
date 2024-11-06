@@ -107,7 +107,7 @@ public class StudentController {
     class SortStudentGPAListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            studentDao.sortStudentByGPA();
+//            studentDao.sortStudentByGPA();
             studentView.showListStudents(studentDao.getListStudents());
         }
     }
