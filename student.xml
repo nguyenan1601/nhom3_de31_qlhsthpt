@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <students>
     <student>
+        <id>1</id>
+        <fullName>duong</fullName>
+        <dateOfBirth>16/11/2004</dateOfBirth>
+        <idNumber>093128371</idNumber>
+        <permanentAddress>trung van</permanentAddress>
+        <className>12A1</className>
+        <fatherName>dad</fatherName>
+        <fatherPhone>0111111111</fatherPhone>
+        <motherName>mom</motherName>
+        <motherPhone>012312313</motherPhone>
+        <talents>bong da</talents>
+        <hobbies>bong da</hobbies>
+    </student>
+    <student>
+        <id>2</id>
+    </student>
+    <student>
         <id>3</id>
+    </student>
+    <student>
+        <id>4</id>
     </student>
     <student>
         <id>5</id>
@@ -10,15 +30,15 @@
         <id>6</id>
     </student>
     <student>
-        <id>2</id>
-    </student>
-    <student>
-        <id>4</id>
-    </student>
-    <student>
-        <id>6</id>
-    </student>
-    <student>
         <id>7</id>
+    </student>
+    <student>
+        <id>8</id>
+    </student>
+    <student>
+        <id>9</id>
+    </student>
+    <student>
+        <id>10</id>
     </student>
 </students>

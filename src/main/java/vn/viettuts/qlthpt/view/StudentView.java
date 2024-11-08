@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.WindowConstants;
@@ -28,29 +27,22 @@ public class StudentView extends JFrame implements ActionListener, ListSelection
     private JButton editStudentBtn;
     private JButton deleteStudentBtn;
     private JButton clearBtn;
-    private JButton sortStudentGPABtn;
     private JButton sortStudentNameBtn;
     private JScrollPane jScrollPaneStudentTable;
-    private JScrollPane jScrollPaneAddress;
     private JTable studentTable;
 
-    private JLabel birthDateLabel, cccdLabel, classNameLabel;
-    private JLabel fatherNameLabel, fatherPhoneLabel;
-    private JLabel motherNameLabel, motherPhoneLabel;
-    private JLabel talentLabel, hobbyLabel;
-    private JLabel idLabel, nameLabel, addressLabel;
+    private JLabel idLabel, fullNameLabel, dateOfBirthLabel, idNumberLabel, permanentAddressLabel,
+            classNameLabel, fatherNameLabel, fatherPhoneLabel, motherNameLabel, motherPhoneLabel,
+            talentLabel, hobbiesLabel;
 
-    private JTextField birthDateField, cccdField, classNameField;
-    private JTextField fatherNameField, fatherPhoneField;
-    private JTextField motherNameField, motherPhoneField;
-    private JTextField talentField, hobbyField;
-    private JTextField idField, nameField;
-    private JTextArea addressTA;
+    private JTextField idField, fullNameField, dateOfBirthField, idNumberField, classNameField,
+            fatherNameField, fatherPhoneField, motherNameField, motherPhoneField, talentField;
+    private JTextField permanentAddressField, hobbiesField;
 
     // định nghĩa các cột của bảng student
     private String[] columnNames = new String[]{
-            "ID", "Họ tên", "Ngày sinh", "CCCD", "Hộ khẩu", "Tên lớp",
-            "Tên bố", "SĐT bố", "Tên mẹ", "SĐT mẹ", "Năng khiếu", "Sở thích"
+            "ID", "Full Name", "Date of Birth", "ID Number", "Permanent Address", "Class Name",
+            "Father Name", "Father Phone", "Mother Name", "Mother Phone", "Talent", "Hobbies"
     };
     // định nghĩa dữ liệu mặc định của bẳng student là rỗng
     private Object data = new Object[][]{};
@@ -72,46 +64,46 @@ public class StudentView extends JFrame implements ActionListener, ListSelection
         studentTable = new JTable();
 
         // khởi tạo các label
-        // Initialize new labels
-        birthDateLabel = new JLabel("Ngày sinh");
-        cccdLabel = new JLabel("CCCD");
-        classNameLabel = new JLabel("Tên lớp");
-        fatherNameLabel = new JLabel("Tên bố");
-        fatherPhoneLabel = new JLabel("SDT bố");
-        motherNameLabel = new JLabel("Tên mẹ");
-        motherPhoneLabel = new JLabel("SDT mẹ");
-        talentLabel = new JLabel("Năng khiếu");
-        hobbyLabel = new JLabel("Sở thích");
+        idLabel = new JLabel("ID");
+        fullNameLabel = new JLabel("Full Name");
+        dateOfBirthLabel = new JLabel("Date of Birth");
+        idNumberLabel = new JLabel("ID Number");
+        permanentAddressLabel = new JLabel("Permanent Address");
+        classNameLabel = new JLabel("Class Name");
+        fatherNameLabel = new JLabel("Father Name");
+        fatherPhoneLabel = new JLabel("Father Phone");
+        motherNameLabel = new JLabel("Mother Name");
+        motherPhoneLabel = new JLabel("Mother Phone");
+        talentLabel = new JLabel("Talent");
+        hobbiesLabel = new JLabel("Hobbies");
 
         // khởi tạo các trường nhập dữ liệu cho student
         idField = new JTextField(6);
         idField.setEditable(false);
-        nameField = new JTextField(15);
-        birthDateField = new JTextField(15);
-        cccdField = new JTextField(15);
-        addressTA = new JTextArea();
-        addressTA.setColumns(15);
-        addressTA.setRows(3);
-        jScrollPaneAddress = new JScrollPane();
-        jScrollPaneAddress.setViewportView(addressTA);
-        classNameField = new JTextField(15);
+        fullNameField = new JTextField(15);
+        dateOfBirthField = new JTextField(10);
+        idNumberField = new JTextField(15);
+        permanentAddressField = new JTextField();
+        permanentAddressField.setColumns(15);
+        classNameField = new JTextField(10);
         fatherNameField = new JTextField(15);
-        fatherPhoneField = new JTextField(15);
+        fatherPhoneField = new JTextField(10);
         motherNameField = new JTextField(15);
-        motherPhoneField = new JTextField(15);
+        motherPhoneField = new JTextField(10);
         talentField = new JTextField(15);
-        hobbyField = new JTextField(15);
+        hobbiesField = new JTextField();
+        hobbiesField.setColumns(15);
 
         // cài đặt các cột và data cho bảng student
-        studentTable.setModel(new DefaultTableModel((Object[][]) data, columnNames));
+        studentTable.setModel(new DefaultTableModel(new Object[][]{}, columnNames));
         jScrollPaneStudentTable.setViewportView(studentTable);
-        jScrollPaneStudentTable.setPreferredSize(new Dimension(480, 300));
+        jScrollPaneStudentTable.setPreferredSize(new Dimension(800, 200));
 
         // tạo spring layout
         SpringLayout layout = new SpringLayout();
         // tạo đối tượng panel để chứa các thành phần của màn hình quản lý Student
         JPanel panel = new JPanel();
-        panel.setSize(800, 420);
+//        panel.setSize(800, 420);
         panel.setLayout(layout);
         panel.add(jScrollPaneStudentTable);
 
@@ -122,153 +114,118 @@ public class StudentView extends JFrame implements ActionListener, ListSelection
         panel.add(sortStudentNameBtn);
 
         panel.add(idLabel);
-        panel.add(nameLabel);
-        panel.add(birthDateLabel);
-        panel.add(cccdLabel);
-        panel.add(addressLabel);
+        panel.add(fullNameLabel);
+        panel.add(dateOfBirthLabel);
+        panel.add(idNumberLabel);
+        panel.add(permanentAddressLabel);
         panel.add(classNameLabel);
         panel.add(fatherNameLabel);
         panel.add(fatherPhoneLabel);
         panel.add(motherNameLabel);
         panel.add(motherPhoneLabel);
         panel.add(talentLabel);
-        panel.add(hobbyLabel);
+        panel.add(hobbiesLabel);
 
-        // Add input fields
         panel.add(idField);
-        panel.add(nameField);
-        panel.add(birthDateField);
-        panel.add(cccdField);
-        panel.add(jScrollPaneAddress);
+        panel.add(fullNameField);
+        panel.add(dateOfBirthField);
+        panel.add(idNumberField);
         panel.add(classNameField);
         panel.add(fatherNameField);
         panel.add(fatherPhoneField);
         panel.add(motherNameField);
         panel.add(motherPhoneField);
         panel.add(talentField);
-        panel.add(hobbyField);
-
-
-        // Layout constraints for labels
-        int baseX = 10;
-        int baseY = 10;
-        int yIncrement = 30;
-        int labelWidth = 100;
-        int fieldX = baseX + labelWidth;
+        panel.add(permanentAddressField);
+        panel.add(hobbiesField);
 
         // cài đặt vị trí các thành phần trên màn hình login
-        // Position labels
-        layout.putConstraint(SpringLayout.WEST, idLabel, baseX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, idLabel, baseY, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, idLabel, 10, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, idLabel, 10, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, idField, 150, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, idField, 10, SpringLayout.NORTH, panel);
 
-        layout.putConstraint(SpringLayout.WEST, nameLabel, baseX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, nameLabel, baseY + yIncrement, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, fullNameLabel, 10, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, fullNameLabel, 40, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, fullNameField, 150, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, fullNameField, 40, SpringLayout.NORTH, panel);
 
-        layout.putConstraint(SpringLayout.WEST, birthDateLabel, baseX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, birthDateLabel, baseY + yIncrement * 2, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, dateOfBirthLabel, 10, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, dateOfBirthLabel, 70, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, dateOfBirthField, 150, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, dateOfBirthField, 70, SpringLayout.NORTH, panel);
 
-        layout.putConstraint(SpringLayout.WEST, cccdLabel, baseX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, cccdLabel, baseY + yIncrement * 3, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, idNumberLabel, 10, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, idNumberLabel, 100, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, idNumberField, 150, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, idNumberField, 100, SpringLayout.NORTH, panel);
 
-        layout.putConstraint(SpringLayout.WEST, addressLabel, baseX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, addressLabel, baseY + yIncrement * 4, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, permanentAddressLabel, 10, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, permanentAddressLabel, 130, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, permanentAddressField, 30, SpringLayout.EAST, permanentAddressLabel);
+        layout.putConstraint(SpringLayout.NORTH, permanentAddressField, 10, SpringLayout.SOUTH, idNumberField);
 
-        layout.putConstraint(SpringLayout.WEST, classNameLabel, baseX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, classNameLabel, baseY + yIncrement * 7, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, classNameLabel, 10, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, classNameLabel, 210, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, classNameField, 150, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, classNameField, 210, SpringLayout.NORTH, panel);
 
-        layout.putConstraint(SpringLayout.WEST, fatherNameLabel, baseX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, fatherNameLabel, baseY + yIncrement * 8, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, fatherNameLabel, 10, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, fatherNameLabel, 240, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, fatherNameField, 150, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, fatherNameField, 240, SpringLayout.NORTH, panel);
 
-        layout.putConstraint(SpringLayout.WEST, fatherPhoneLabel, baseX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, fatherPhoneLabel, baseY + yIncrement * 9, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, fatherPhoneLabel, 10, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, fatherPhoneLabel, 270, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, fatherPhoneField, 150, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, fatherPhoneField, 270, SpringLayout.NORTH, panel);
 
-        layout.putConstraint(SpringLayout.WEST, motherNameLabel, baseX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, motherNameLabel, baseY + yIncrement * 10, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, motherNameLabel, 10, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, motherNameLabel, 300, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, motherNameField, 150, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, motherNameField, 300, SpringLayout.NORTH, panel);
 
-        layout.putConstraint(SpringLayout.WEST, motherPhoneLabel, baseX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, motherPhoneLabel, baseY + yIncrement * 11, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, motherPhoneLabel, 10, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, motherPhoneLabel, 330, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, motherPhoneField, 150, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, motherPhoneField, 330, SpringLayout.NORTH, panel);
 
-        layout.putConstraint(SpringLayout.WEST, talentLabel, baseX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, talentLabel, baseY + yIncrement * 12, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, talentLabel, 10, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, talentLabel, 360, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, talentField, 150, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, talentField, 360, SpringLayout.NORTH, panel);
 
-        layout.putConstraint(SpringLayout.WEST, hobbyLabel, baseX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, hobbyLabel, baseY + yIncrement * 13, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, hobbiesLabel, 10, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, hobbiesLabel, 390, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, hobbiesField, 150, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, hobbiesField, 390, SpringLayout.NORTH, panel);
 
-        // Position fields
-        layout.putConstraint(SpringLayout.WEST, idField, fieldX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, idField, baseY, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, nameField, fieldX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, nameField, baseY + yIncrement, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, birthDateField, fieldX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, birthDateField, baseY + yIncrement * 2, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, cccdField, fieldX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, cccdField, baseY + yIncrement * 3, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, jScrollPaneAddress, fieldX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, jScrollPaneAddress, baseY + yIncrement * 4, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, classNameField, fieldX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, classNameField, baseY + yIncrement * 7, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, fatherNameField, fieldX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, fatherNameField, baseY + yIncrement * 8, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, fatherPhoneField, fieldX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, fatherPhoneField, baseY + yIncrement * 9, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, motherNameField, fieldX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, motherNameField, baseY + yIncrement * 10, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, motherPhoneField, fieldX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, motherPhoneField, baseY + yIncrement * 11, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, talentField, fieldX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, talentField, baseY + yIncrement * 12, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, hobbyField, fieldX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, hobbyField, baseY + yIncrement * 13, SpringLayout.NORTH, panel);
-
-        // Position table
-        layout.putConstraint(SpringLayout.WEST, jScrollPaneStudentTable, 350, SpringLayout.WEST, panel);
+// Cài đặt vị trí của bảng studentTable
+        layout.putConstraint(SpringLayout.WEST, jScrollPaneStudentTable, 320, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, jScrollPaneStudentTable, 10, SpringLayout.NORTH, panel);
 
-        // Position buttons
-        int buttonY = baseY + yIncrement * 14;
-        layout.putConstraint(SpringLayout.WEST, addStudentBtn, baseX, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, addStudentBtn, buttonY, SpringLayout.NORTH, panel);
+// Cài đặt vị trí các nút chức năng
+        layout.putConstraint(SpringLayout.WEST, addStudentBtn, 10, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, addStudentBtn, 430, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, editStudentBtn, 80, SpringLayout.WEST, addStudentBtn);
+        layout.putConstraint(SpringLayout.NORTH, editStudentBtn, 430, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, deleteStudentBtn, 80, SpringLayout.WEST, editStudentBtn);
+        layout.putConstraint(SpringLayout.NORTH, deleteStudentBtn, 430, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, clearBtn, 80, SpringLayout.WEST, deleteStudentBtn);
+        layout.putConstraint(SpringLayout.NORTH, clearBtn, 430, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, sortStudentNameBtn, 320, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, sortStudentNameBtn, 430, SpringLayout.NORTH, panel);
 
-        layout.putConstraint(SpringLayout.WEST, editStudentBtn, 100, SpringLayout.WEST, addStudentBtn);
-        layout.putConstraint(SpringLayout.NORTH, editStudentBtn, buttonY, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, deleteStudentBtn, 100, SpringLayout.WEST, editStudentBtn);
-        layout.putConstraint(SpringLayout.NORTH, deleteStudentBtn, buttonY, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, clearBtn, 100, SpringLayout.WEST, deleteStudentBtn);
-        layout.putConstraint(SpringLayout.NORTH, clearBtn, buttonY, SpringLayout.NORTH, panel);
-
-        layout.putConstraint(SpringLayout.WEST, sortStudentNameBtn, 100, SpringLayout.WEST, clearBtn);
-        layout.putConstraint(SpringLayout.NORTH, sortStudentNameBtn, buttonY, SpringLayout.NORTH, panel);
 
         this.add(panel);
         this.pack();
         this.setTitle("Student Information");
-        this.setSize(1000, 600);
-
+        this.setSize(1300, 600);
         // disable Edit and Delete buttons
         editStudentBtn.setEnabled(false);
         deleteStudentBtn.setEnabled(false);
         // enable Add button
         addStudentBtn.setEnabled(true);
-
-        studentTable.getSelectionModel().addListSelectionListener(this);
-        addStudentBtn.addActionListener(this);
-        editStudentBtn.addActionListener(this);
-        deleteStudentBtn.addActionListener(this);
-        clearBtn.addActionListener(this);
-        sortStudentNameBtn.addActionListener(this);
     }
 
     public void showMessage(String message) {
@@ -300,6 +257,7 @@ public class StudentView extends JFrame implements ActionListener, ListSelection
             students[i][9] = list.get(i).getMotherPhone();
             students[i][10] = list.get(i).getTalents();
             students[i][11] = list.get(i).getHobbies();
+
         }
         studentTable.setModel(new DefaultTableModel(students, columnNames));
     }
@@ -312,8 +270,17 @@ public class StudentView extends JFrame implements ActionListener, ListSelection
         int row = studentTable.getSelectedRow();
         if (row >= 0) {
             idField.setText(studentTable.getModel().getValueAt(row, 0).toString());
-            nameField.setText(studentTable.getModel().getValueAt(row, 1).toString());
-            addressTA.setText(studentTable.getModel().getValueAt(row, 3).toString());
+            fullNameField.setText(studentTable.getModel().getValueAt(row, 1).toString());
+            dateOfBirthField.setText(studentTable.getModel().getValueAt(row, 2).toString());
+            idNumberField.setText(studentTable.getModel().getValueAt(row, 3).toString());
+            permanentAddressField.setText(studentTable.getModel().getValueAt(row, 4).toString());
+            classNameField.setText(studentTable.getModel().getValueAt(row, 5).toString());
+            fatherNameField.setText(studentTable.getModel().getValueAt(row, 6).toString());
+            fatherPhoneField.setText(studentTable.getModel().getValueAt(row, 7).toString());
+            motherNameField.setText(studentTable.getModel().getValueAt(row, 8).toString());
+            motherPhoneField.setText(studentTable.getModel().getValueAt(row, 9).toString());
+            talentField.setText(studentTable.getModel().getValueAt(row, 10).toString());
+            hobbiesField.setText(studentTable.getModel().getValueAt(row, 11).toString());
             // enable Edit and Delete buttons
             editStudentBtn.setEnabled(true);
             deleteStudentBtn.setEnabled(true);
@@ -327,8 +294,17 @@ public class StudentView extends JFrame implements ActionListener, ListSelection
      */
     public void clearStudentInfo() {
         idField.setText("");
-        nameField.setText("");
-        addressTA.setText("");
+        fullNameField.setText("");
+        dateOfBirthField.setText("");
+        idNumberField.setText("");
+        permanentAddressField.setText("");
+        classNameField.setText("");
+        fatherNameField.setText("");
+        fatherPhoneField.setText("");
+        motherNameField.setText("");
+        motherPhoneField.setText("");
+        talentField.setText("");
+        hobbiesField.setText("");
         // disable Edit and Delete buttons
         editStudentBtn.setEnabled(false);
         deleteStudentBtn.setEnabled(false);
@@ -343,10 +319,17 @@ public class StudentView extends JFrame implements ActionListener, ListSelection
      */
     public void showStudent(Student student) {
         idField.setText("" + student.getId());
-//        nameField.setText(student.getName());
-//        ageField.setText("" + student.getAge());
-//        addressTA.setText(student.getAddress());
-//        gpaField.setText("" + student.getGpa());
+        fullNameField.setText(student.getFullName());
+        dateOfBirthField.setText(""+student.getDateOfBirth());
+        idNumberField.setText(student.getIdNumber());
+        permanentAddressField.setText(student.getPermanentAddress());
+        classNameField.setText(student.getClassName());
+        fatherNameField.setText(student.getFatherName());
+        fatherPhoneField.setText(student.getFatherPhone());
+        motherNameField.setText(student.getMotherName());
+        motherPhoneField.setText(student.getMotherPhone());
+        talentField.setText(student.getTalents());
+        hobbiesField.setText(student.getHobbies());
         // enable Edit and Delete buttons
         editStudentBtn.setEnabled(true);
         deleteStudentBtn.setEnabled(true);
@@ -381,9 +364,9 @@ public class StudentView extends JFrame implements ActionListener, ListSelection
     }
 
     private boolean validateName() {
-        String name = nameField.getText();
+        String name = fullNameField.getText();
         if (name == null || "".equals(name.trim())) {
-            nameField.requestFocus();
+            fullNameField.requestFocus();
             showMessage("Name không được trống.");
             return false;
         }
@@ -391,14 +374,15 @@ public class StudentView extends JFrame implements ActionListener, ListSelection
     }
 
     private boolean validateAddress() {
-        String address = addressTA.getText();
+        String address = permanentAddressField.getText();
         if (address == null || "".equals(address.trim())) {
-            addressTA.requestFocus();
+            permanentAddressField.requestFocus();
             showMessage("Address không được trống.");
             return false;
         }
         return true;
     }
+
 
 
     public void actionPerformed(ActionEvent e) {
@@ -421,10 +405,6 @@ public class StudentView extends JFrame implements ActionListener, ListSelection
 
     public void addClearListener(ActionListener listener) {
         clearBtn.addActionListener(listener);
-    }
-
-    public void addSortStudentGPAListener(ActionListener listener) {
-        sortStudentGPABtn.addActionListener(listener);
     }
 
     public void addSortStudentNameListener(ActionListener listener) {

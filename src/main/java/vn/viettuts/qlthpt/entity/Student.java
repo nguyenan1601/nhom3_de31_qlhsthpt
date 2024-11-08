@@ -13,7 +13,7 @@ public class Student implements Serializable {
     private static final long serialVersionUID = 1L;
     private int id;
     private String fullName;
-    private Date dateOfBirth;
+    private String dateOfBirth;
     private String idNumber;
     private String permanentAddress;
     private String className;
@@ -27,7 +27,7 @@ public class Student implements Serializable {
     public Student() {
     }
 
-    public Student(int id, String fullName, Date dateOfBirth, String idNumber, String permanentAddress, String className, String fatherName, String fatherPhone, String motherName, String motherPhone, String talents, String hobbies) {
+    public Student(int id, String fullName, String dateOfBirth, String idNumber, String permanentAddress, String className, String fatherName, String fatherPhone, String motherName, String motherPhone, String talents, String hobbies) {
         this.id = id;
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
@@ -58,11 +58,11 @@ public class Student implements Serializable {
         this.fullName = fullName;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
