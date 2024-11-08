@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import vn.viettuts.qlthpt.dao.UserDao;
 import vn.viettuts.qlthpt.entity.User;
+import vn.viettuts.qlthpt.view.ClassView;
 import vn.viettuts.qlthpt.view.LoginView;
 import vn.viettuts.qlthpt.view.StudentView;
 
@@ -12,6 +13,7 @@ public class LoginController {
     private UserDao userDao;
     private LoginView loginView;
     private StudentView studentView;
+    private ClassView classView;
 
     public LoginController(LoginView view) {
         this.loginView = view;
@@ -42,9 +44,13 @@ public class LoginController {
             }else {
                 if (userDao.checkUser(user)) {
                     // nếu đăng nhập thành công, mở màn hình quản lý sinh viên
-                    studentView = new StudentView();
-                    StudentController studentController = new StudentController(studentView);
-                    studentController.showStudentView();
+//                    studentView = new StudentView();
+//                    StudentController studentController = new StudentController(studentView);
+//                    studentController.showStudentView();
+                    classView = new ClassView();
+                    ClassController classController = new ClassController(classView);
+//                    classController.showClassView();
+                    classView.setVisible(true);
                     loginView.setVisible(false);
                 }else {
                     loginView.showMessage("username hoặc password không đúng.");

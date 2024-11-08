@@ -32,4 +32,14 @@
         </teacher>
         <students/>
     </class>
+    <class>
+        <id>4</id>
+        <className>10A4</className>
+        <teacher>
+            <id>0</id>
+            <name>md</name>
+            <subject>Toán</subject>
+        </teacher>
+        <students/>
+    </class>
 </classes>
