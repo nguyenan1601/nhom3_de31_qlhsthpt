@@ -262,4 +262,5 @@ public class ClassView extends JFrame implements ActionListener, ListSelectionLi
     public void addClassTableSelectionListener(ListSelectionListener listener){
         classTable.getSelectionModel().addListSelectionListener(listener);
     }
+    public void addAddStudentListener(ActionListener listener) { addStudentBtn.addActionListener(listener);}
 }

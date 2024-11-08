@@ -22,7 +22,6 @@ public class StudentController {
         view.addEdiStudentListener(new EditStudentListener());
         view.addDeleteStudentListener(new DeleteStudentListener());
         view.addClearListener(new ClearStudentListener());
-        view.addSortStudentGPAListener(new SortStudentGPAListener());
         view.addSortStudentNameListener(new SortStudentNameListener());
         view.addListStudentSelectionListener(new ListStudentSelectionListener());
     }
@@ -104,13 +103,13 @@ public class StudentController {
      *
      * @author viettuts.vn
      */
-    class SortStudentGPAListener implements ActionListener {
-
-        public void actionPerformed(ActionEvent e) {
-//            studentDao.sortStudentByGPA();
-            studentView.showListStudents(studentDao.getListStudents());
-        }
-    }
+//    class SortStudentGPAListener implements ActionListener {
+//
+//        public void actionPerformed(ActionEvent e) {
+////            studentDao.sortStudentByGPA();
+//            studentView.showListStudents(studentDao.getListStudents());
+//        }
+//    }
 
     /**
      * Lớp SortStudentGPAListener chứa cài đặt cho sự kiện click button "Sort By Name"

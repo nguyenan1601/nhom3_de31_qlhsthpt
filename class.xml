@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <classes>
     <class>
-        <id>1</id>
-        <className>10A1</className>
-        <teacher>
-            <id>1</id>
-            <name>Nguyễn Văn A</name>
-            <subject>Toán</subject>
-            <phone>0123456789</phone>
-            <email>nguyenvana@email.com</email>
-        </teacher>
-        <students/>
-    </class>
-    <class>
-        <id>2</id>
-        <className>12A2</className>
-        <teacher>
-            <id>0</id>
-            <name>Md</name>
-            <subject>Văn</subject>
-        </teacher>
-        <students/>
-    </class>
-    <class>
         <id>3</id>
         <className>10A3</className>
         <teacher>
