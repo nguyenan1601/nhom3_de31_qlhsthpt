@@ -1,111 +1,90 @@
 package vn.viettuts.qlthpt.dao;
+
+import vn.viettuts.qlthpt.entity.Class;
+import vn.viettuts.qlthpt.entity.ClassXML;
+import vn.viettuts.qlthpt.entity.Student;
+import vn.viettuts.qlthpt.utils.FileUtils;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import vn.viettuts.qlthpt.entity.ClassList;
-import vn.viettuts.qlthpt.entity.ClassRoom;
-import vn.viettuts.qlthpt.entity.Teacher;
-import vn.viettuts.qlthpt.utils.FileUtils;
 
 public class ClassDao {
     private static final String CLASS_FILE_NAME = "class.xml";
-    private ClassList classList;
+    private List<Class> listClasses;
 
-    public ClassDao() {
-        this.classList = readListClasses();
-        if (classList == null) {
-            classList = new ClassList();
+    public ClassDao(){
+        this.listClasses = readListClasses();
+        if (listClasses == null) {
+            listClasses = new ArrayList<>();
         }
     }
-
-    /**
-     * Lưu danh sách lớp học vào file
-     */
-    public void writeListClasses() {
-        FileUtils.writeXMLtoFile(CLASS_FILE_NAME, classList);
+    public void writeListClasses(List<Class> classes){
+        ClassXML classXML = new ClassXML();
+        classXML.setClasses(classes);
+        FileUtils.writeXMLtoFile(CLASS_FILE_NAME,classXML);
+    }
+    public List<Class> readListClasses(){
+        List<Class> list = new ArrayList<Class>();
+        ClassXML classXML = (ClassXML) FileUtils.readXMLFile(CLASS_FILE_NAME, ClassXML.class);
+        if (classXML != null) {
+            list=classXML.getClasses();
+        }
+        return list;
     }
 
-    /**
-     * Đọc danh sách lớp học từ file
-     */
-    public ClassList readListClasses() {
-        return (ClassList) FileUtils.readXMLFile(CLASS_FILE_NAME, ClassList.class);
+    public void addClass(Class classObj) {
+        int id = 1;
+        if (listClasses != null && listClasses.size() > 0) {
+            id = listClasses.size() + 1;
+        }
+        classObj.setId(id);
+        listClasses.add(classObj);
+        writeListClasses(listClasses);
     }
-
-    /**
-     * Thêm lớp học vào danh sách
-     */
-    public boolean addClass(ClassRoom classroom) {
-        // Kiểm tra xem ID đã tồn tại chưa
-        for (ClassRoom existing : classList.getClasses()) {
-            if (existing.getId().equals(classroom.getId())) {
-                return false;
+    public void editClass(Class classObj) {
+        int size = listClasses.size();
+        for (int i = 0; i < size; i++) {
+            if (listClasses.get(i).getId() == classObj.getId()) {
+                listClasses.set(i, classObj);
+                break;
             }
         }
-        classList.getClasses().add(classroom);
-        writeListClasses();
-        return true;
+        writeListClasses(listClasses);
     }
-
-    /**
-     * Cập nhật thông tin lớp học
-     */
-    public boolean editClass(ClassRoom classroom) {
-        for (int i = 0; i < classList.getClasses().size(); i++) {
-            if (classList.getClasses().get(i).getId().equals(classroom.getId())) {
-                classList.getClasses().set(i, classroom);
-                writeListClasses();
-                return true;
+    public boolean deleteClass(Class classObj) {
+        boolean isFound = false;
+        int size = listClasses.size();
+        for (int i = 0; i < size; i++) {
+            if (listClasses.get(i).getId() == classObj.getId()) {
+                classObj = listClasses.get(i);
+                isFound = true;
+                break;
             }
+        }
+        if (isFound) {
+            listClasses.remove(classObj);
+            writeListClasses(listClasses);
+            return true;
         }
         return false;
     }
-
-    /**
-     * Xóa lớp học khỏi danh sách
-     */
-    public boolean deleteClass(String id) {
-        for (ClassRoom classroom : classList.getClasses()) {
-            if (classroom.getId().equals(id)) {
-                classList.getClasses().remove(classroom);
-                writeListClasses();
-                return true;
+    public List<Class> getListClasses() {
+        return listClasses;
+    }
+    public Class getClassById(int id) {
+        for (Class classObj : listClasses) {
+            if (classObj.getId() == id) {
+                return classObj;
             }
         }
-        return false;
+        return null;
     }
-
-    /**
-     * Lấy danh sách tất cả các lớp học
-     */
-    public List<ClassRoom> getListClasses() {
-        return classList.getClasses();
-    }
-
-    /**
-     * Tìm kiếm lớp học theo từ khóa
-     */
-    public List<ClassRoom> searchClasses(String keyword) {
-        List<ClassRoom> searchResult = new ArrayList<>();
-        if (keyword == null) {
-            return searchResult;
-        }
-
-        keyword = keyword.toLowerCase();
-
-        for (ClassRoom classroom : classList.getClasses()) {
-            Teacher teacher = classroom.getTeacher();
-            if (Objects.toString(classroom.getId(), "").toLowerCase().contains(keyword) ||
-                    Objects.toString(classroom.getName(), "").toLowerCase().contains(keyword) ||
-                    (teacher != null && (
-                            Objects.toString(teacher.getName(), "").toLowerCase().contains(keyword) ||
-                                    Objects.toString(teacher.getId(), "").toLowerCase().contains(keyword) ||
-                                    Objects.toString(teacher.getSubject(), "").toLowerCase().contains(keyword)
-                    ))) {
-                searchResult.add(classroom);
+    public List<Student> getStudentsByClassName(String className) {
+        for (Class classObj : listClasses) {
+            if (classObj.getClassName().equals(className)) {
+                return classObj.getStudents();
             }
         }
-        return searchResult;
+        return new ArrayList<>();
     }
 }

@@ -11,14 +11,18 @@ public class Teacher {
     private int id;
     private String name;
     private String subject;
+    private String phone;
+    private String email;
 
     public Teacher() {
     }
 
-    public Teacher(int id, String fullName, String specialty) {
+    public Teacher(int id, String name, String subject, String phone, String email) {
         this.id = id;
-        this.name = fullName;
-        this.subject = specialty;
+        this.name = name;
+        this.subject = subject;
+        this.phone = phone;
+        this.email = email;
     }
 
     public int getId() {
@@ -45,4 +49,19 @@ public class Teacher {
         this.subject = subject;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

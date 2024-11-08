@@ -1,6 +1,8 @@
 package vn.viettuts.qlthpt;
 
 import java.awt.EventQueue;
+
+import vn.viettuts.qlthpt.controller.ClassController;
 import vn.viettuts.qlthpt.controller.LoginController;
 import vn.viettuts.qlthpt.view.ClassView;
 import vn.viettuts.qlthpt.view.LoginView;
@@ -15,6 +17,7 @@ public class App {
                 // hiển thị màn hình login
 //                controller.showLoginView();
                 ClassView classView = new ClassView();
+                ClassController classController =new ClassController(classView);
                 classView.setVisible(true);
             }
         });
