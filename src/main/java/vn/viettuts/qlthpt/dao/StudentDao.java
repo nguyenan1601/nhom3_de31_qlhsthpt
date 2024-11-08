@@ -133,4 +133,11 @@ public class StudentDao {
     public void setListStudents(List<Student> listStudents) {
         this.listStudents = listStudents;
     }
+    public List<Student> getStudentsByClassName(String className){
+        return listStudents;
+    }
+    public int getStudentCountByClassName(String className){
+        return 0;
+    }
+
 }

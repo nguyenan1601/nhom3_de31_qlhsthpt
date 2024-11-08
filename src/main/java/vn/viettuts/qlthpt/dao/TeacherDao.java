@@ -50,8 +50,8 @@ public class TeacherDao {
         int size = listTeachers.size();
         for (int i = 0; i < size; i++) {
             if (listTeachers.get(i).getId() == teacher.getId()) {
-                listTeachers.get(i).setFullName(teacher.getFullName());
-                listTeachers.get(i).setSpecialty(teacher.getSpecialty());
+                listTeachers.get(i).setName(teacher.getName());
+                listTeachers.get(i).setSubject(teacher.getSubject());
                 writeListTeachers(listTeachers);
                 break;
             }
@@ -79,7 +79,7 @@ public class TeacherDao {
     public void sortTeacherByName() {
         Collections.sort(listTeachers, new Comparator<Teacher>() {
             public int compare(Teacher teacher1, Teacher teacher2) {
-                return teacher1.getFullName().compareTo(teacher2.getFullName());
+                return teacher1.getName().compareTo(teacher2.getName());
             }
         });
     }

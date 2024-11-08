@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<classlist>
+    <classes>
+        <classroom>
+            <id>C001</id>
+            <name>Lớp 10A1</name>
+            <teacher>Nguyễn Văn A</teacher>
+            <studentCount>35</studentCount>
+        </classroom>
+    </classes>
+</classlist>

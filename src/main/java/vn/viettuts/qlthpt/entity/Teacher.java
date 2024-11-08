@@ -1,6 +1,5 @@
 package vn.viettuts.qlthpt.entity;
 
-import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -10,16 +9,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Teacher {
 
     private int id;
-    private String fullName;
-    private String specialty;
+    private String name;
+    private String subject;
 
     public Teacher() {
     }
 
     public Teacher(int id, String fullName, String specialty) {
         this.id = id;
-        this.fullName = fullName;
-        this.specialty = specialty;
+        this.name = fullName;
+        this.subject = specialty;
     }
 
     public int getId() {
@@ -30,20 +29,20 @@ public class Teacher {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getName() {
+        return name;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSpecialty() {
-        return specialty;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
 }

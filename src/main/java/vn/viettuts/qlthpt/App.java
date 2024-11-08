@@ -2,6 +2,7 @@ package vn.viettuts.qlthpt;
 
 import java.awt.EventQueue;
 import vn.viettuts.qlthpt.controller.LoginController;
+import vn.viettuts.qlthpt.view.ClassView;
 import vn.viettuts.qlthpt.view.LoginView;
 
 public class App {
@@ -12,7 +13,9 @@ public class App {
                 LoginView view = new LoginView();
                 LoginController controller = new LoginController(view);
                 // hiển thị màn hình login
-                controller.showLoginView();
+//                controller.showLoginView();
+                ClassView classView = new ClassView();
+                classView.setVisible(true);
             }
         });
     }
