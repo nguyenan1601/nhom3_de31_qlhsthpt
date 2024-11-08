@@ -6,6 +6,7 @@ import vn.viettuts.qlthpt.view.ClassView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClassController {
@@ -29,7 +30,10 @@ public class ClassController {
         classView.addClearListener(new ClearListener());
         classView.addSearchListener(new SearchListener());
     }
-
+    public void showClassView(){
+        List<ClassRoom> classRoomList = classDao.getListClasses();
+        classView.setVisible(true);
+    }
     public void loadClassList() {
         List<ClassRoom> classList = classDao.getListClasses();
         Object[][] data = new Object[classList.size()][4];
