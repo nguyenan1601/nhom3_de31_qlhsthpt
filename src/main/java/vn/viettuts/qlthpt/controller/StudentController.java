@@ -32,11 +32,6 @@ public class StudentController {
         studentView.showListStudents(studentList);
     }
 
-    /**
-     * Lớp AddStudentListener chứa cài đặt cho sự kiện click button "Add"
-     *
-     * @author viettuts.vn
-     */
     class AddStudentListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
@@ -50,11 +45,6 @@ public class StudentController {
         }
     }
 
-    /**
-     * Lớp EditStudentListener chứa cài đặt cho sự kiện click button "Edit"
-     *
-     * @author viettuts.vn
-     */
     class EditStudentListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
@@ -68,11 +58,6 @@ public class StudentController {
         }
     }
 
-    /**
-     * Lớp DeleteStudentListener chứa cài đặt cho sự kiện click button "Delete"
-     *
-     * @author viettuts.vn
-     */
     class DeleteStudentListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
@@ -86,11 +71,6 @@ public class StudentController {
         }
     }
 
-    /**
-     * Lớp ClearStudentListener chứa cài đặt cho sự kiện click button "Clear"
-     *
-     * @author viettuts.vn
-     */
     class ClearStudentListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
@@ -106,11 +86,7 @@ public class StudentController {
         }
     }
 
-    /**
-     * Lớp ListStudentSelectionListener chứa cài đặt cho sự kiện chọn student trong bảng student
-     *
-     * @author viettuts.vn
-     */
+
     class ListStudentSelectionListener implements ListSelectionListener {
 
         public void valueChanged(ListSelectionEvent e) {

@@ -30,7 +30,7 @@ public class StudentView extends JFrame implements ActionListener, ListSelection
     private JButton sortStudentNameBtn;
     private JScrollPane jScrollPaneStudentTable;
     private JTable studentTable;
-
+//...other existing code 
     private JLabel idLabel, fullNameLabel, dateOfBirthLabel, idNumberLabel, permanentAddressLabel,
             classNameLabel, fatherNameLabel, fatherPhoneLabel, motherNameLabel, motherPhoneLabel,
             talentLabel, hobbiesLabel;

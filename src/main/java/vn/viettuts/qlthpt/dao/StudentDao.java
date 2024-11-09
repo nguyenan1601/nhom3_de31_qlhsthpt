@@ -22,18 +22,12 @@ public class StudentDao {
         }
     }
 
-    /**
-     * Save student objects to student.xml file
-     */
     public void writeListStudents(List<Student> students) {
         StudentXML studentXML = new StudentXML();
         studentXML.setStudent(students);
         FileUtils.writeXMLtoFile(STUDENT_FILE_NAME, studentXML);
     }
 
-    /**
-     * Read student objects from student.xml file
-     */
     public List<Student> readListStudents() {
         List<Student> list = new ArrayList<Student>();
         StudentXML studentXML = (StudentXML) FileUtils.readXMLFile(
@@ -44,9 +38,6 @@ public class StudentDao {
         return list;
     }
 
-    /**
-     * Add student to listStudents and save to file
-     */
     public void add(Student student) {
         int id = 1;
         if (listStudents != null && listStudents.size() > 0) {
@@ -57,9 +48,6 @@ public class StudentDao {
         writeListStudents(listStudents);
     }
 
-    /**
-     * Update student in listStudents and save to file
-     */
     public void edit(Student student) {
         int size = listStudents.size();
         for (int i = 0; i < size; i++) {
@@ -81,9 +69,6 @@ public class StudentDao {
         }
     }
 
-    /**
-     * Delete student from listStudents and save to file
-     */
     public boolean delete(Student student) {
         boolean isFound = false;
         int size = listStudents.size();
@@ -102,9 +87,6 @@ public class StudentDao {
         return false;
     }
 
-    /**
-     * Sort student list by name in ascending order
-     */
     public void sortStudentByName() {
         Collections.sort(listStudents, new Comparator<Student>() {
             public int compare(Student student1, Student student2) {
@@ -113,9 +95,6 @@ public class StudentDao {
         });
     }
 
-    /**
-     * Sort student list by class name in ascending order
-     */
     public void sortStudentByClass() {
         Collections.sort(listStudents, new Comparator<Student>() {
             public int compare(Student student1, Student student2) {
