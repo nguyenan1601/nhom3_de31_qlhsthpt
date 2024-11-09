@@ -25,11 +25,6 @@ public class LoginController {
         loginView.setVisible(true);
     }
 
-    /**
-     * Lớp LoginListener chứa cài đặt cho sự kiện click button "Login"
-     *
-     * @author viettuts.vn
-     */
     class LoginListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
@@ -43,13 +38,9 @@ public class LoginController {
                 loginView.showMessage("Hãy nhập password!");
             }else {
                 if (userDao.checkUser(user)) {
-                    // nếu đăng nhập thành công, mở màn hình quản lý sinh viên
-//                    studentView = new StudentView();
-//                    StudentController studentController = new StudentController(studentView);
-//                    studentController.showStudentView();
+
                     classView = new ClassView();
                     ClassController classController = new ClassController(classView);
-//                    classController.showClassView();
                     classView.setVisible(true);
                     loginView.setVisible(false);
                 }else {

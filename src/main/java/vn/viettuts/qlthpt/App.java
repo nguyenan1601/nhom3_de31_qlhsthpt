@@ -15,10 +15,7 @@ public class App {
                 LoginView view = new LoginView();
                 LoginController controller = new LoginController(view);
                 // hiển thị màn hình login
-//                controller.showLoginView();
-                ClassView classView = new ClassView();
-                ClassController classController =new ClassController(classView);
-                classView.setVisible(true);
+                controller.showLoginView();
             }
         });
     }

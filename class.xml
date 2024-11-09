@@ -20,4 +20,14 @@
         </teacher>
         <students/>
     </class>
+    <class>
+        <id>3</id>
+        <className>12</className>
+        <teacher>
+            <id>0</id>
+            <name>ád</name>
+            <subject>đá</subject>
+        </teacher>
+        <students/>
+    </class>
 </classes>

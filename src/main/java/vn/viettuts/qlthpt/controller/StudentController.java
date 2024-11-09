@@ -98,24 +98,6 @@ public class StudentController {
         }
     }
 
-    /**
-     * Lớp SortStudentGPAListener chứa cài đặt cho sự kiện click button "Sort By GPA"
-     *
-     * @author viettuts.vn
-     */
-//    class SortStudentGPAListener implements ActionListener {
-//
-//        public void actionPerformed(ActionEvent e) {
-////            studentDao.sortStudentByGPA();
-//            studentView.showListStudents(studentDao.getListStudents());
-//        }
-//    }
-
-    /**
-     * Lớp SortStudentGPAListener chứa cài đặt cho sự kiện click button "Sort By Name"
-     *
-     * @author viettuts.vn
-     */
     class SortStudentNameListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
